@@ -18,6 +18,8 @@ class main(commands.Cog):
                        guilded_webhook_url: str):
         try:
             try:
+                if '../' in interaction.guild.id or '..\\' in interaction.guild.id:
+                    raise Exception("Invalid file path")
                 open(f"./api/{interaction.guild.id}.json", "x")
             except:
                 pass
