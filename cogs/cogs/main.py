@@ -70,10 +70,13 @@ class main(commands.Cog):
     @application_command.slash_command(name="api-data", description="Get the data of your server and group")
     async def getdata(self, interaction: nextcord.Interaction):
         try:
-            data = open(f"./api/{interaction.guild.id}.json")
-            for i in data:
-                embed = nextcord.Embed(title="Your data", description=f"```json\n{i}```")
-                await interaction.response.send_message(embed=embed, ephemeral=True)
+            file_path = f"./api/{interaction.guild.id}.json"
+            if '../' in file_path or '..\\' in file_path:
+                raise Exception("Invalid file path")
+            with open(file_path, 'r') as data:
+                for i in data:
+                    embed = nextcord.Embed(title="Your data", description=f"```json\n{i}```")
+                    await interaction.response.send_message(embed=embed, ephemeral=True)
         except:
             await interaction.response.send_message(":x: - We did not found any data belonging to this server.",
                                                     ephemeral=True)
