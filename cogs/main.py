@@ -99,7 +99,10 @@ class main(commands.Cog):
     async def config(self, interaction: nextcord.Interaction, discord_id: int = None,
                      discord_channel: nextcord.TextChannel = None, guilded_id: str = None, guilded_channel: str = None):
         try:
-            api_raw = open(f"../api/{interaction.guild.id}.json", "r+")
+            file_path = f"../api/{interaction.guild.id}.json"
+            if '../' in file_path or '..\\' in file_path:
+                raise Exception("Invalid file path")
+            api_raw = open(file_path, "r+")
             api = json.load(api_raw)
             state = api["general"][0]["state"]
             if state == "1":
