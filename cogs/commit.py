@@ -29,7 +29,7 @@ class commiter(commands.Cog):
                                 discord_mod_log_channel_id = api["general"][0]["discord-mod-logs-channel-id"]
                                 guilded_mod_log_channel_id = api["general"][0]["guilded-mod-logs-channel-id"]
                                 mod_log_channel = self.client.get_channel(discord_mod_log_channel_id)
-                                embed = nextcord.Embed(title=f"New message from Discord",
+                                embed = nextcord.Embed(title="New message from Discord",
                                                        description=f"**User ID:** {message.author.id}\n"
                                                                    f"**Message:** `{message.content}`")
                                 await mod_log_channel.send(embed=embed)
