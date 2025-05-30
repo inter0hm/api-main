@@ -33,7 +33,7 @@ class forward(commands.Cog):
                                 discord_mod_log_channel_id = api["general"][0]["discord-mod-logs-channel-id"]
                                 guilded_mod_log_channel_id = api["general"][0]["guilded-mod-logs-channel-id"]
                                 mod_log_channel = self.client.get_channel(discord_mod_log_channel_id)
-                                embed = nextcord.Embed(title=f"New message from Guilded",
+                                embed = nextcord.Embed(title="New message from Guilded",
                                                        description=f"**User ID:** {author_id}\n"
                                                                    f"**Message:** `{text_log}`")
                                 await mod_log_channel.send(embed=embed)

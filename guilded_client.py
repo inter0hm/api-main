@@ -34,7 +34,7 @@ async def forward_loop():
                             discord_mod_log_channel_id = api["general"][0]["discord-mod-logs-channel-id"]
                             guilded_mod_log_channel_id = api["general"][0]["guilded-mod-logs-channel-id"]
                             mod_log_channel = await bot.getch_channel(guilded_mod_log_channel_id)
-                            embed = guilded.Embed(title=f"New message from Discord",
+                            embed = guilded.Embed(title="New message from Discord",
                                                    description=f"**User ID:** {author_id}\n"
                                                                f"**Message:** `{text_log}`")
                             await mod_log_channel.send(embed=embed)
@@ -191,7 +191,7 @@ async def on_message(message):
                         if not message.webhook_id:
                             guilded_mod_log_channel_id = api["general"][0]["guilded-mod-logs-channel-id"]
                             mod_log_channel = await bot.getch_channel(guilded_mod_log_channel_id)
-                            embed = guilded.Embed(title=f"New message from Guilded",
+                            embed = guilded.Embed(title="New message from Guilded",
                                                   description=f"**User ID:** {message.author.id}\n"
                                                               f"**Message:** `{message.content}`")
                             await mod_log_channel.send(embed=embed)
